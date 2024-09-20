@@ -12,7 +12,7 @@ function Home() {
             <Col  sm={12} md={6}>
                 <h1 style={{fontSize:"80px"}} className='fw-border text-light'><i className="fa-solid fa-list-check me-2"></i>Project-Fair</h1>
                 <p className='text-light'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque iure, mollitia natus tempora enim modi voluptas consequuntur, assumenda accusantium ratione sapiente esse quia similique ad tenetur vero deserunt. Delectus, error!</p>
-                <Button className='btn btn-warning'>Start to Explore</Button>
+                <Link to={'/login'}><Button className='btn btn-warning'>Start to Explore</Button></Link>
             </Col>
             <Col sm={12} md={6} >
                 <img src={titleImage} className='my-5' width={"60%"} alt="titleImage" />
