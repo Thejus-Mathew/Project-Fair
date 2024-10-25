@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Card, Col, Modal, Row } from 'react-bootstrap'
-import projectImage from '../assets/images/image2.webp'
+// import projectImage from '../assets/images/image2.webp'
+import { serverURL } from '../services/serverURL';
 
 
-function Projectcard() {
+function Projectcard({project}) {
 
 
   const [show, setShow] = useState(false);
@@ -11,14 +12,14 @@ function Projectcard() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
+  
 
   return (
     <>
       <Card style={{ width: '18rem' }} className='mt-3'>
-        <Card.Img variant="top" src={projectImage} onClick={handleShow} />
+        <Card.Img variant="top" src={`${serverURL}/uploads/${project?.projectImage}`} onClick={handleShow} />
         <Card.Body>
-          <Card.Title>Project Title</Card.Title>
+          <Card.Title>{project?.title}</Card.Title>
         </Card.Body>
       </Card>
 
@@ -30,19 +31,19 @@ function Projectcard() {
         <Modal.Body>
           <Row>
             <Col md={6}>
-              <img src={projectImage} width={"100%"} alt="" />
+              <img src={`${serverURL}/uploads/${project?.projectImage}`} width={"100%"} alt="" />
             </Col>
             <Col md={6}>
-              <h2 className='text-success'>Prjoect Title</h2>
-              <p><span><strong>Project Overview:</strong></span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis odit doloribus consequatur alias minus. Nihil laborum aspernatur dolorum laboriosam, maiores voluptatum veritatis rem ducimus ullam pariatur eum porro possimus quis?</p>
-              <p className='text-warning'>Languages Used: HTML, CSS, JavaScript</p>
+              <h2 className='text-success'>{project?.title}</h2>
+              <p><span><strong>Project Overview:</strong></span>{project?.overview}</p>
+              <p className='text-warning'>Languages Used: {project?.languages}</p>
             </Col>
           </Row>
         </Modal.Body>
         <Modal.Footer>
           <div className="mt-2">
-            <a href="" target='_blank' className='btn me-3'><i className="fa-brands fa-github fa-2xl"></i></a>
-            <a href="" target='_blank' className='btn me-3'><i className="fa-solid fa-link fa-2xl"></i></a>
+            <a href={project?.github} target='_blank' className='btn me-3'><i className="fa-brands fa-github fa-2xl"></i></a>
+            <a href={project?.website} target='_blank' className='btn me-3'><i className="fa-solid fa-link fa-2xl"></i></a>
           </div>
         </Modal.Footer>
       </Modal>

@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Projects from './pages/Projects'
 import Footer from './components/Footer'
 import Auth from './pages/Auth'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
