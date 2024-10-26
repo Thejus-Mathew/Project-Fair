@@ -67,9 +67,7 @@ function Addproject() {
           "Authorization":`Bearer ${token}`
         }
         try{
-          console.log(reqHead);
           const result = await addProjectApi(reqBody,reqHead)
-          console.log(result);
           if(result.status == 200){
             setAddProjectResponse(result.data)
             handleClose()

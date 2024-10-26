@@ -1,19 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Button, Modal, Toast } from 'react-bootstrap';
-import proImg from '../assets/images/projectImage.png'
+import React, {  useContext, useEffect, useState } from 'react'
+import { Button, Modal } from 'react-bootstrap';
 import { Flip, toast, ToastContainer } from 'react-toastify';
-import { addProjectApi, editProjectApi } from '../services/allAPI';
-import { addProjectContextResponse } from '../ContextApi/ContextShare';
+import {  editProjectApi } from '../services/allAPI';
 import { serverURL } from '../services/serverURL';
+import { editProjectContextResponse } from '../ContextApi/ContextShare';
 
 
 function Editproject({project}) {
-  const{addProjectResponse,setAddProjectResponse}=useContext(addProjectContextResponse)
+  const{editProjectResponse,setEditProjectResponse}=useContext(editProjectContextResponse)
+
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-    setProjectData({...project,projectImage:""})
     setShow(false)
   }
   const handleShow = () => setShow(true);
@@ -51,6 +50,7 @@ function Editproject({project}) {
           const result =await editProjectApi(project._id,reqBody,reqHead)
           if(result.status == 200){
             handleClose()
+            setEditProjectResponse(result.data)
           }else{
             toast.warn(result.message)
             console.log(result);
