@@ -28,11 +28,10 @@ function Projects() {
     getAllProjects()
   },[searchKey])
 
-console.log(searchKey);
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="projects">
         <h1 className='text-center fw-bolder mt-5'>All Projects</h1>
         <div className="d-flex justify-content-center align-items-center">

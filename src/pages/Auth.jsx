@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Form, Navbar } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import authImage from '../assets/images/authImage.png'
 import { loginAPI, registerAPI } from '../services/allAPI'
 import { Flip, toast, ToastContainer } from 'react-toastify'
+import { tokenAuthContext } from '../ContextApi/Tokenauth'
 
 
 
 function Auth({register}) {
+
+    const {isAuthorized,setIsAuthorized} = useContext(tokenAuthContext)
 
 
     const isRegisterForm = register?true:false
@@ -57,6 +60,7 @@ function Auth({register}) {
                     sessionStorage.setItem("token",result.data.token)
                     navigate('/')
                     setUserData({username:"",email:"",password:""})
+                    setIsAuthorized(true)
                 }else{
                     toast.warning(`${result.status} ${result.response.data}`)
                 }

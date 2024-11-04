@@ -9,7 +9,7 @@ function Dashboard() {
 
   return (
     <>
-      <Header/>
+      <Header insideDashboard/>
       <Row className=' m-0 w-100'>
         <Col className='' sm={12} md={8}>
           <h2>Welcome <span className='text-warning fw-bolder'>{sessionStorage.getItem("username") || "user"}</span></h2>

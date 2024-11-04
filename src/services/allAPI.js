@@ -45,3 +45,15 @@ export const editProjectApi = async(id,reqBody,reqHeader)=>{
 export const deleteProjectApi = async(id,reqHeader)=>{
     return await commonAPI("DELETE",`${serverURL}/projects/delete/${id}`,{},reqHeader)
 }
+
+
+// edit profile
+export const updateProfileApi = async(reqBody,reqHeader)=>{
+    return await commonAPI("PUT",`${serverURL}/updateprofile`,reqBody,reqHeader)
+}
+
+
+// get profile
+export const getProfileApi = async(reqHeader)=>{
+    return await commonAPI("GET",`${serverURL}/getprofile`,"",reqHeader)
+}
